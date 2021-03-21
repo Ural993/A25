@@ -1,18 +1,25 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h2 class="title">Заметки</h2>
+    <ToDoList v-bind:todos="todos" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import ToDoList from "@/components/ToDoList";
 export default {
-  name: 'Home',
   components: {
-    HelloWorld
-  }
-}
+    ToDoList,
+  },
+  computed: {
+    todos() {
+      return this.$store.getters.todos;
+    },
+  },
+};
 </script>
+<style scoped>
+.title {
+  margin-top: 40px;
+}
+</style>
